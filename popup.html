@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link href='https://fonts.googleapis.com/css?family=Press Start 2P' rel='stylesheet'>
+    <title>Website Blocker</title>
+    <style>
+        *{
+          font-family: 'Press Start 2P'  
+        }
+      body {
+        width: 500px;
+        height: 400px;
+      }
+  
+      label {
+        display: block;
+        margin-bottom: 5px;
+      }
+  
+      button {
+        margin-top: 10px;
+      }
+    </style>
+  </head>
+  
+  <body>
+    <h3>Blocked Websites</h3>
+    <div>
+        <h5> Blocked Websites: </h5>
+        <ul id="blockedSitesList"></ul>
+    </div>
+
+    <label for="website">Add URL:</label>
+    <input type="text" id="website" placeholder="Enter a website">
+    <button id="blockButton">Block</button>
+
+    <script src="popup.js"></script>
+  </body>
+  

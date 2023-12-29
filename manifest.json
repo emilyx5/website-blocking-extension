@@ -9,6 +9,7 @@
     "128": "images/icon-128.png"
   },
   "action": {
+    "default_popup": "popup.html",
     "default_icon": {
       "16": "images/icon-16.png",
       "32": "images/icon-32.png",
@@ -16,15 +17,13 @@
       "128": "images/icon-128.png"
     }
   },
-  "content_scripts":[
-    {
-      "matches":[
-        "https://www.facebook.com/*",
-        "https://www.youtube.com/*"
-      ],
-      "css":[
-        "css/style.css"
-      ]
-    }
-  ]
+  "permissions":[
+    "webNavigation",
+    "webRequest",
+    "storage",
+    "tabs"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  }
 }
