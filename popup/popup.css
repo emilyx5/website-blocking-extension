@@ -1,0 +1,89 @@
+*{
+    font-family: 'Press Start 2P' ; 
+    color: #201c1c;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  }
+body {
+  width: 500px;
+  height: auto;
+  padding: 10px;
+  background: radial-gradient(50% 50% at 50% 50%, #FFA996 0%, #FFCB90 70.83%, #FFE1A1 99.98%, rgba(255, 225, 119, 0.01) 99.99%, #FFDFA0 100%);
+}
+
+h3{
+    display:block;
+    color: white;
+    position: fixed;
+    padding:10px;
+    font-weight: light;
+    font-style: italic;
+    text-align: left;
+}
+h5{
+    margin-top: 30px;
+    color:darkslategray;
+    font-size:15px;
+}
+h6{
+    color:#A04444;
+    font-size:13px;
+    margin:auto;
+}
+p{
+    font-size: 10px;
+}
+
+ul {
+    background: rgba(1, 1, 1, 0.2);
+    padding: 10px;
+    padding-left: 30px;
+    border-radius: 5px;
+    line-height: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+.banner{
+    background-color: darkslategrey;
+    top:-15px;
+    left:0px;
+    width: 100%;
+    height: auto;
+    padding: 10px;
+}
+button {
+  margin-top: 10px;
+  font-weight:lighter;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  color:rgb(255, 255, 255);
+  -webkit-filter: drop-shadow(4px 5px 2px #2222225e);
+  filter: drop-shadow(4px 5px 2px #2222225e);
+  text-align: center;
+  background-color: #8CA96F;
+}
+
+button:hover{
+    box-shadow: 0px 5px 4px 0px rgba(0, 0, 0, 0.40) inset, 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    color:#1E1E1E;
+    background-color: #446425;
+}
+
+#removeButton{
+    background-color: #FA7D7D;
+}
+#removeButton:hover{
+    background-color: #A04444;
+}
+
+input[type="text"] {
+    box-sizing: border-box;
+    padding:10px;
+    border: none;
+    border-radius: 5px;
+    cursor:text;
+    color:#1E1E1E;
+  }

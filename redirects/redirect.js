@@ -3,8 +3,8 @@ document.addEventListener('DOMContentLoaded', function()
     const closeButton = document.getElementById('closeTab');
     const checkButton = document.getElementById('necessityCheck');
     const yesButton = document.getElementById('yes');
-    const proceedButton = document.getElementById('proceedToPage')
-
+    const proceedButton = document.getElementById('proceedToPage');
+    
     if(closeButton){
         closeButton.addEventListener('click', closeTab);
     }
@@ -15,7 +15,56 @@ document.addEventListener('DOMContentLoaded', function()
         yesButton.addEventListener('click', openScroll);
     }
     if(proceedButton){
-        proceedButton.addEventListener('click', openBlockedSite);
+        proceedButton.onclick = function(){
+            const reason = document.getElementById('reason').value;
+            const hours = document.getElementById('hours').value;
+            const mins = document.getElementById('mins').value;
+            const reminders = document.getElementById('reminders').value;
+            const signature = document.getElementById('signature').value;
+
+            if (reason && hours && mins && reminders && signature){
+                const totalMins = hours*60 + mins*1;
+                console.log(totalMins);
+                const repeats = (totalMins/(reminders*1 + 1));
+                console.log(repeats);
+                var i = 0;  
+                openBlockedSite();
+                function loop() {         
+                  setTimeout(function() {  
+                    if(i == reminders){
+                        chrome.storage.sync.set({tempAllowed: []}, function(){
+                            console.log(`Temporary websites cleared.`);
+                        });
+                        chrome.tabs.query({active: true, currentWindow: true}, function (arrayOfTabs) {
+                            var code = 'window.location.reload();';
+                            chrome.tabs.executeScript(arrayOfTabs[0].id, {code: code});
+                        });
+                        i++;
+                    }    
+                    else{
+                        chrome.notifications.create('notif', {
+                            type: 'basic',
+                            iconUrl: '../images/icon-32.png',
+                            title: 'Hi ' + signature+ ', are you still on track?',
+                            message: "Make sure you are still unblocking for this reason! \n" + "You wrote: " + reason
+                        })
+                        i++;
+                        console.log(1000*(repeats*60));
+                
+                        if (i <= reminders+1) { 
+                            chrome.notifications.clear('notif')         
+                            loop();             
+                        } 
+                    }                     
+                  }, 1000*(repeats*60))
+                }
+                loop(); 
+            }
+            else{
+                alert("Please fill in all fields!")
+            }
+        }
+
     }
 
     function closeTab(){
@@ -65,6 +114,7 @@ document.addEventListener('DOMContentLoaded', function()
     }
 
 })
+
 
 
 

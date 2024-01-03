@@ -11,11 +11,28 @@
     <div class="overlay"></div>
     <div class="scroll">
         <div class="scroll-container">
-            <h4>Reason:</h4>
-            <form>
-                <input type="text" id="reason" name="reason"><br>
-                <input type="sub" value="Submit"><br>
-            </form>
+            <div class="help-tip">
+                <p>List the reason you want to access the blocked site! This will be used to remind yourself to stay on track!</p>
+            </div>
+            <h4>Reason for access:</h4> 
+            <input type="text" id="reason" minlength="1" placeholder="Enter reason here..."><br>
+            <div class="help-tip">
+                <p>Estimate how much time you'll spend on the blocked site. The website will resume being blocked after this duration.</p>
+            </div>
+            <h4>Estimated Time Required:</h4>
+            <div class="time-container">
+                <input type="number" id="hours" min="0" max="2" placeholder="0"><br>
+                <h5>h</h5>
+                <input type="number" id="mins" min="0" max="59" placeholder="00"><br>
+                <h5>m</h5>
+            </div> 
+            <div class="help-tip">
+                <p># of notifications sent while on site, <br> eg. 1 reminder for 30min means 1 notification after 15mins</p>
+            </div>
+            <h4> # of reminders: </h4>
+            <input type="number" id="reminders" min="1" max="20" placeholder="0"><br>
+            <h6>Signed by:</h6>
+            <input type="text" id="signature" minlength="1" placeholder="Enter name..."><br>
         </div>
     </div>
     <div class="button-container3">

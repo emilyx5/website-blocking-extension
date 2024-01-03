@@ -2,37 +2,24 @@
 <html>
 <head>
     <link href='https://fonts.googleapis.com/css?family=Press Start 2P' rel='stylesheet'>
+    <link rel="stylesheet" href="popup.css">
     <title>Website Blocker</title>
-    <style>
-        *{
-          font-family: 'Press Start 2P'  
-        }
-      body {
-        width: 500px;
-        height: 400px;
-      }
-  
-      label {
-        display: block;
-        margin-bottom: 5px;
-      }
-  
-      button {
-        margin-top: 10px;
-      }
-    </style>
   </head>
   
   <body>
-    <h3>Blocked Websites</h3>
+    <h3 class="banner">WEBSITE BLOCKER!</h3>
     <div>
-        <h5> Blocked Websites: </h5>
+        <h5> Blocked Sites: </h5>
         <ul id="blockedSitesList"></ul>
     </div>
 
-    <label for="website">Add URL:</label>
+    <h5>Add URL:</h5>
+    <p>Please enter full website <i>(eg. www.youtube.com)</i><p>
     <input type="text" id="website" placeholder="Enter a website">
     <button id="blockButton">Block</button>
+    <h6>Remove url:</h6>
+    <input type="text" id="remove" placeholder="Enter a website">
+    <button id="removeButton">Remove</button>
 
     <script src="popup.js"></script>
   </body>

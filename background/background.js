@@ -17,7 +17,6 @@ chrome.runtime.onInstalled.addListener(function () {
           if (blockedSites.includes(tabUrl.hostname)){
             chrome.storage.sync.get(['tempAllowed'], function(list){
                 const tempAllowed = list.tempAllowed;
-                console.log(tempAllowed);
                 if(!(tempAllowed.includes(tabUrl.hostname))){
                   chrome.tabs.update(details.tabId, { url: 'redirects/redirect.html' });
                   chrome.storage.sync.set({wantedSite: tab.url}, function () {
@@ -30,4 +29,3 @@ chrome.runtime.onInstalled.addListener(function () {
       });
     });
   });
-  
