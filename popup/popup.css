@@ -72,11 +72,21 @@ button:hover{
     background-color: #446425;
 }
 
-#removeButton{
-    background-color: #FA7D7D;
+.delete-button{
+    background-color: #fd5b5b;
+    color: white;
+    border: none;
+    text-align: center;
+    border-radius: 4px;
+    background-size:auto;
+    font-size: small;
+    cursor: pointer;
+    margin-left: 10px;
+    padding: 3px;
 }
-#removeButton:hover{
+.delete-button:hover{
     background-color: #A04444;
+    cursor: pointer;
 }
 
 input[type="text"] {
