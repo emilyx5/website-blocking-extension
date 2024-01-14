@@ -32,13 +32,10 @@ document.addEventListener('DOMContentLoaded', function()
                 function loop() {         
                   setTimeout(function() {  
                     if(i == reminders){
+                        closeTab();
                         chrome.storage.sync.set({tempAllowed: []}, function(){
                             console.log(`Temporary websites cleared.`);
-                        });
-                        chrome.tabs.query({active: true, currentWindow: true}, function (arrayOfTabs) {
-                            var code = 'window.location.reload();';
-                            chrome.tabs.executeScript(arrayOfTabs[0].id, {code: code});
-                        });
+                        }); 
                         i++;
                     }    
                     else{
@@ -57,8 +54,9 @@ document.addEventListener('DOMContentLoaded', function()
                         } 
                     }                     
                   }, 1000*(repeats*60))
+                  
                 }
-                loop(); 
+                loop();
             }
             else{
                 alert("Please fill in all fields!")
