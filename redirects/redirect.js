@@ -27,36 +27,8 @@ document.addEventListener('DOMContentLoaded', function()
                 console.log(totalMins);
                 const repeats = (totalMins/(reminders*1 + 1));
                 console.log(repeats);
-                var i = 0;  
-                openBlockedSite();
-                function loop() {         
-                  setTimeout(function() {  
-                    if(i == reminders){
-                        closeTab();
-                        chrome.storage.sync.set({tempAllowed: []}, function(){
-                            console.log(`Temporary websites cleared.`);
-                        }); 
-                        i++;
-                    }    
-                    else{
-                        chrome.notifications.create('notif', {
-                            type: 'basic',
-                            iconUrl: '../images/icon-32.png',
-                            title: 'Hi ' + signature+ ', are you still on track?',
-                            message: "Make sure you are still unblocking for this reason! \n" + "You wrote: " + reason
-                        })
-                        i++;
-                        console.log(1000*(repeats*60));
                 
-                        if (i <= reminders+1) { 
-                            chrome.notifications.clear('notif')         
-                            loop();             
-                        } 
-                    }                     
-                  }, 1000*(repeats*60))
-                  
-                }
-                loop();
+                openBlockedSite(reason, signature,reminders, repeats);
             }
             else{
                 alert("Please fill in all fields!")
@@ -78,10 +50,22 @@ document.addEventListener('DOMContentLoaded', function()
         closeTab();
         chrome.tabs.create({ url: 'redirects/scroll.html' });
     } 
-    async function openBlockedSite(){
+
+    async function openBlockedSite(reason, signature, reminders, repeats){
         const url = await getBlockedSite();
         console.log('Stored Tab URL:', url);
-        chrome.tabs.create({url : url});
+        chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+            chrome.tabs.update(tabs[0].id, { url: url });
+            chrome.runtime.sendMessage({ command: "loop" , params:{
+                i : 0,
+                reason : reason,
+                signature : signature,
+                reminders : reminders,
+                repeats : repeats
+            }
+            });
+        });
+        
     }
 
     function getBlockedSite(){
