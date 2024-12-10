@@ -1,5 +1,5 @@
 # Website Blocker!
-#### All images created by me using https://www.pixilart.com/draw#
+#### All images created using https://www.pixilart.com/draw#
 This is a Chrome extension that helps users block websites of their choosing while maintaining flexibility, allowing them to temporarily unblock needed sites. Sometimes, distracting websites like YouTube need to be used! 
 It's a hassle having to unblock and block on other extensions, and risk clicking into the less educational recommended videos while the ban is lifted, so I wanted to take the chance to **a)** learn how to code one myself, **b)** add some variability/adaptability **c)** get to design the interface to make it more compelling.
 
